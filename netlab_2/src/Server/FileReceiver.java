@@ -25,7 +25,7 @@ public class FileReceiver implements Runnable {
     private TransmittedByteCounter transmittedByteCounter;
     private String reseivedFilename;
     
-    FileReceiver(Socket socket) {
+    public FileReceiver(Socket socket) {
         this.socket = socket;
         this.transmittedByteCounter = new TransmittedByteCounter();
         reseivedFilename = null;
@@ -67,7 +67,7 @@ public class FileReceiver implements Runnable {
         Path path = Paths.get("uploads" + File.separator + format.format(currentDate) + file.getName());
         for(int i = 1; Files.exists(path) || i >= Integer.MAX_VALUE; ++i) {
 
-            logger.log(Level.INFO, "ebuchyy circle iteration: " + i);
+            logger.log(Level.INFO, "iteration: " + i);
             path = Paths.get("uploads" + File.separator + format.format(currentDate) + i + file.getName());
         }
 

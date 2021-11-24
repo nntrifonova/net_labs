@@ -9,8 +9,8 @@ import java.net.UnknownHostException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static java.sql.Types.TIME;
-
+//import static java.sql.Types.TIME;
+import static Constants.Constants.TIME;
 
 public class Client {
     private static final Logger logger = Logger.getLogger(Client.class.getName());

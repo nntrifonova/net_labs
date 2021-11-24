@@ -13,7 +13,7 @@ public class FileSender {
     private File file;
     private String filename;
 
-    FileSender(Socket s, String filename) throws FileNotFoundException {
+    public FileSender(Socket s, String filename) throws FileNotFoundException {
         this.socket = s;
         this.file = new File(filename);
         this.filename = filename;
@@ -22,7 +22,7 @@ public class FileSender {
         }
     }
 
-    void sentFile() throws IOException {
+    public void sentFile() throws IOException {
         try (FileInputStream input = new FileInputStream(file);
              OutputStream outputStream = socket.getOutputStream()) {
 

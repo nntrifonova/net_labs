@@ -6,11 +6,17 @@ import java.net.Socket;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+
+
 public class Server {
     private static final Logger logger = Logger.getLogger(Server.class.getName());
+    private static ExecutorService threadPool = Executors.newCachedThreadPool();
+
     public static void main(String[] args) {
         if (args.length < 1) {
             throw new IllegalArgumentException("Invalid number of arguments");
@@ -33,9 +39,9 @@ public class Server {
         try (ServerSocket serverSocket = new ServerSocket(port)) {
             while(true) {
                 try {
-                    Socket socket = serverSocket.accept();//читать
+                    Socket socket = serverSocket.accept();
                     Runnable fileReceiver = new FileReceiver(socket);
-                    new Thread(fileReceiver).start();
+                    threadPool.submit(() -> fileReceiver);
                 } catch (IOException exc) {
                     exc.printStackTrace();
                 }
