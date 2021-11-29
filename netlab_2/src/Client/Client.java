@@ -9,13 +9,16 @@ import java.net.UnknownHostException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-//import static java.sql.Types.TIME;
 import static Constants.Constants.TIME;
 
 public class Client {
     private static final Logger logger = Logger.getLogger(Client.class.getName());
     public static void main(String[] args) {
         /*IP-address & port OR DNS*/
+        if (args.length < 3) {
+            logger.log(Level.SEVERE, "Invalid number of arguments");
+            System.exit(1);
+        }
         InetAddress serverAddress = null;
         try {
             serverAddress = InetAddress.getByName(args[1]);

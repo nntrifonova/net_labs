@@ -12,7 +12,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-
 public class Server {
     private static final Logger logger = Logger.getLogger(Server.class.getName());
     private static ExecutorService threadPool = Executors.newCachedThreadPool();
@@ -40,8 +39,7 @@ public class Server {
             while(true) {
                 try {
                     Socket socket = serverSocket.accept();
-                    Runnable fileReceiver = new FileReceiver(socket);
-                    threadPool.submit(() -> fileReceiver);
+                    threadPool.submit(new FileReceiver(socket));
                 } catch (IOException exc) {
                     exc.printStackTrace();
                 }

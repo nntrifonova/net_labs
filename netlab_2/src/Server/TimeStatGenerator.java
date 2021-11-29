@@ -7,8 +7,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import static Constants.Constants.MINIMAL_TIME_INTERVAL;
-// currentTimeMillis()
-
 
 public class TimeStatGenerator {
     private static final Logger logger = Logger.getLogger(TimeStatGenerator.class.getName());
@@ -23,7 +21,6 @@ public class TimeStatGenerator {
     TimeStatGenerator(ByteCounter bytesCounter, int interval) {
         this.bytesCounter = bytesCounter;
 
-        //or maybe the ternary operator will look better here?
         this.interval = Math.max(MINIMAL_TIME_INTERVAL, interval);
         this.time = 0;
 
