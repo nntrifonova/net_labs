@@ -14,4 +14,8 @@ module com.company {
 
     opens com.company.app to org.apache.commons.lang3, com.fasterxml.jackson.databind;
     exports com.company.app;
+    opens com.company.controller to javafx.fxml;
+    exports com.company.controller;
+    opens com.company.view to javafx.fxml;
+    exports com.company.view;
 }
